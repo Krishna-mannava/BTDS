@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Brain Tumor Detection</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+		
+	</head>
+	<body>
+     <div class="u">
+	<form method="post" action="/" enctype="multipart/form-data">
+	<h1 style="text-align: center;margin: 20px;color:#000; background-color: rgb(129, 162, 255) ">Brain Tumor Detection System</h1>
+	<marquee behavior="scroll" direction="left" scrollamount="20"  style="color:rgb(255, 58, 58)">Kindly Upload MRI Scan of Brain Image</marquee>
+<p style="border-bottom: 2px solid #adadad;
+  position: relative;
+  margin: 25px 0;"></p>
+<p style="
+  position: relative; 
+  margin: 25px 0;">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	<p style="text-align:center;
+	font-weight:bold;
+ font-family: 'Times New Roman', Times, serif;
+font-size: 20px;">
+	{{ messages[0] }}
+		</p>
+	<p style="text-align:center;
+	font-weight:bold;
+
+font-family: 'Times New Roman', Times, serif;
+font-size: 20px;">
+	{{ messages[2] }}
+		</p>
+
+	<p style="text-align:center;
+  position: relative;
+  margin: 20px 0;">
+	    <img src= "{{url_for('static',filename=messages[1])}}" height="200" width="200" >
+</p>
+	  {% endif %}
+	{% endwith %}
+<p style="
+  position: relative;
+  margin: 20px 0;text-align:center;"><input style="width: 300px; margin: 0 auto;" type="file" name="file" autocomplete="off" required>	</p>
+<p style="
+  position: relative;
+  margin: 10px 0;
+border-top: 2px solid #adadad;"></p>
+	<p style="text-align:center;"><input type="submit" class="b" value="Submit"/></p>
+</form>
+
+<a href=info>
+		<button  style = "margin:8px;" type="submit" class="c">
+			Information Desk
+		</button>
+</a>
+
+<a href=download >
+	<button  style = "margin:8px; float:right;" type="submit" class="e">
+		Show Report
+	</button>
+</a> 
+
+<form action="https://www.spineandneurosurgeryhospitalindia.com/blog/top-10-brain-tumor-surgeons-in-india/">
+	<button style = "margin:8px;" type="submit" class="d">
+		Suggested Surgeons/Hospitals
+	</button>
+</form>
+
+</div>
+
+	</body>
+</html>
+

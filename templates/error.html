@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p >Oops! you haven't uploaded your Brain MRI scan image, please upload it inorder to see your report.</p>
+<input type="image" onclick="goBack()" src="{{url_for('static',filename='css/much.png')}}" name="submit" style="text-align: center;" width="150" height="70" alt="submit"/>  
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+</body>
+</html>
