@@ -4,6 +4,7 @@ import os
 import numpy as np
 import imutils
 from keras.applications.vgg16 import preprocess_input
+IMG_SIZE = (224,224)
 def preprocess_imgs(set_name, img_size):
     """
     Resize and apply VGG-15 preprocessing
@@ -49,6 +50,7 @@ def crop_imgs(set_name, add_pixels_value=0):
 
         ADD_PIXELS = add_pixels_value
         new_img = img[extTop[1]-ADD_PIXELS:extBot[1]+ADD_PIXELS, extLeft[0]-ADD_PIXELS:extRight[0]+ADD_PIXELS].copy()
+        new_img = cv2.resize(new_img, IMG_SIZE)
         set_new.append(new_img)
 
     return np.array(set_new)
@@ -58,6 +60,7 @@ def load_data(dir_path):
     X = []
     labels = dict()       
     img = cv2.imread(dir_path)
+    img = cv2.resize(img, IMG_SIZE)
     X.append(img)
 #     print(f'{len(X)} images loaded from {dir_path} directory.')
     return X
@@ -65,7 +68,8 @@ def load_data(dir_path):
 def getPrediction(filename):
 
     model = tf.keras.models.load_model('u.h5')
-    TRAIN_DIR = 'D:/project/static/'+filename
+    TRAIN_DIR = '../BTDS/static/'+filename
+    print(TRAIN_DIR)
     u = load_data(TRAIN_DIR)
     u = crop_imgs(set_name=u)
     IMG_SIZE = (224,224)

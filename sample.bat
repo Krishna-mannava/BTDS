@@ -1,1 +1,0 @@
-start /min python index.py
